@@ -1,0 +1,25 @@
+{
+  "name": "katasinnode",
+  "version": "1.0.0",
+  "description": "Katas in Node",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeregrinTooc/KatasInNode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PeregrinTooc/KatasInNode/issues"
+  },
+  "homepage": "https://github.com/PeregrinTooc/KatasInNode#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
