@@ -12,8 +12,15 @@ afterAll(async function () {
 });
 
 test("primeFactors", async function () {
-    expect(cut(1)).toEqual([]);
-    expect(cut(2)).toEqual([2]);
-    expect(cut(3)).toEqual([3]);
-    expect(cut(4)).toEqual([2, 2]);
+    expectPrimeFactorsToBe(1, []);
+    expectPrimeFactorsToBe(2, [2]);
+    expectPrimeFactorsToBe(3, [3]);
+    expectPrimeFactorsToBe(4, [2, 2]);
+    expectPrimeFactorsToBe(5, [5]);
+    expectPrimeFactorsToBe(6, [3, 2]);
+    expectPrimeFactorsToBe(2 * 3 * 5 * 5 * 7 * 13, [13, 7, 5, 5, 3, 2]);
 });
+
+function expectPrimeFactorsToBe(number, factors) {
+    expect(cut(number)).toEqual(factors);
+}
