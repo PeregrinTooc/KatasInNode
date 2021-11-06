@@ -1,7 +1,7 @@
 const primeFactors = require('../modules/primeFactors.js')
 const cut = primeFactors.calculate
 
-test("primeFactors", async function () {
+test("primeFactors", function () {
     expectPrimeFactorsToBe(1, []);
     expectPrimeFactorsToBe(2, [2]);
     expectPrimeFactorsToBe(3, [3]);
