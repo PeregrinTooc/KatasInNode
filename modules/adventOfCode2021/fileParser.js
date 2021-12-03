@@ -6,4 +6,8 @@ function parseToIntegerArray(fileName) {
     const integers = file.split('\n')
     return integers.map(i => parseInt(i))
 }
-module.exports = { parseToIntegerArray }
+function parseToStringArray(fileName) {
+    const file = fs.readFileSync(fileName, 'utf8');
+    return file.split('\n')
+}
+module.exports = { parseToIntegerArray, parseToStringArray }
