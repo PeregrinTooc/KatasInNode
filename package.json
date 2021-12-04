@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/PeregrinTooc/KatasInNode#readme",
   "devDependencies": {
-    "jest": "^27.3.1"
+    "jest": "^27.4.3"
   },
   "dependencies": {
     "prompt-sync": "^4.2.0"

@@ -26,15 +26,19 @@ test("solver 1 should handle longer input", () => {
         toBe(parseInt("000110010001", 2) * parseInt("111001101110", 2))
 })
 test("solver 1 should solve the puzzle", () => {
-    return
-    expect(solver.solve1(puzzleInput)).toBe(0)
+    expect(solver.solve1(puzzleInput)).toBe(2954600)
 })
 test("solver 2 should exist", () => {
     expect(solver.solve2).toBeDefined()
 })
+test("solver 2 should calculate life support", () => {
+    expect(solver.solve2(["000", "111", "000"])).toBe(0 * 7)
+    expect(solver.solve2(["001", "111", "001"])).toBe(1 * 7)
+    expect(solver.solve2(["001", "111", "011"])).toBe(3 * 7)
+})
 test("solver 2 should pass acceptance test", () => {
     return
-    expect(solver.solve2(acceptanceTestInput)).toBe(900)
+    expect(solver.solve2(acceptanceTestInput)).toBe(230)
 })
 test("solver 2 should solve the puzzle", () => {
     return
