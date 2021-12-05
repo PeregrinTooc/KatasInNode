@@ -35,14 +35,13 @@ test("solver 2 should calculate life support", () => {
     expect(solver.solve2(["000", "111", "000"])).toBe(0 * 7)
     expect(solver.solve2(["001", "111", "001"])).toBe(1 * 7)
     expect(solver.solve2(["001", "111", "011"])).toBe(3 * 7)
+    expect(solver.solve2(["001", "010", "111", "100"])).toBe(7 * 1)
 })
 test("solver 2 should pass acceptance test", () => {
-    return
     expect(solver.solve2(acceptanceTestInput)).toBe(230)
 })
 test("solver 2 should solve the puzzle", () => {
-    return
-    expect(solver.solve2(puzzleInput)).toBe(1947878632)
+    expect(solver.solve2(puzzleInput)).toBe(1662846)
 })
 
 

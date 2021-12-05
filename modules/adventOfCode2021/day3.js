@@ -36,7 +36,7 @@ function solve2(input) {
         return meta.count[i] >= meta.half ? "1" : "0";
     })
     let co2ScrubberRating = filterWithFunction(report, (meta, i) => {
-        return meta.count[i] <= meta.half ? "1" : "0";
+        return meta.count[i] < meta.half ? "1" : "0";
     })
 
     return co2ScrubberRating * oxGenRating
