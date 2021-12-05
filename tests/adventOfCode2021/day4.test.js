@@ -21,8 +21,6 @@ function getInput(input) {
             }
         }
     }
-    console.log(boards)
-
     return { numbers, boards }
 }
 
@@ -90,10 +88,8 @@ test("solver 2 should exist", () => {
 })
 
 test("solver 2 should pass acceptance test", () => {
-    return
-    expect(solver.solve2(acceptanceTestInput)).toBe(230)
+    expect(solver.solve2(getInput(acceptanceTestInput))).toBe(1924)
 })
 test("solver 2 should solve the puzzle", () => {
-    return
-    expect(solver.solve2(puzzleInput)).toBe(1662846)
+    expect(solver.solve2(getInput(puzzleInput))).toBe(1662846)
 })
