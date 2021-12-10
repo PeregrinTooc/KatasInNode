@@ -83,13 +83,32 @@ test("solver 2 should exist", () => {
     expect(solver.solve2).toBeDefined()
 })
 
+test("solver 2 should take diagonals into account", () => {
+    expect(solver.solve2([
+        createLine(0, 0, 1, 0),
+        createLine(0, 0, 1, 1)])).toBe(1)
+    expect(solver.solve2([
+        createLine(0, 0, 1, 0),
+        createLine(0, 1, 1, 0)])).toBe(1)
+    expect(solver.solve2([
+        createLine(1, 0, 1, 3),
+        createLine(0, 0, 2, 2)])).toBe(1)
+    expect(solver.solve2([
+        createLine(1, 0, 1, 3),
+        createLine(2, 2, 0, 0)])).toBe(1)
+    expect(solver.solve2([
+        createLine(1, 0, 1, 3),
+        createLine(0, 2, 2, 0)])).toBe(1)
+    expect(solver.solve2([
+        createLine(1, 0, 1, 3),
+        createLine(2, 0, 0, 2)])).toBe(1)
+})
+
 test("solver 2 should pass acceptance test", () => {
-    return
-    expect(solver.solve2(getInput(acceptanceTestInput))).toBe(1924)
+    expect(solver.solve2(getInput(acceptanceTestInput))).toBe(12)
 })
 test("solver 2 should solve the puzzle", () => {
-    return
-    expect(solver.solve2(getInput(puzzleInput))).toBe(1662846)
+    expect(solver.solve2(getInput(puzzleInput))).toBe(17787)
 })
 
 
