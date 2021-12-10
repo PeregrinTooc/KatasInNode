@@ -1,5 +1,4 @@
 const fs = require('fs')
-const path = require("path")
 
 function parseToIntegerArray(fileName) {
     const file = fs.readFileSync(fileName, 'utf8');

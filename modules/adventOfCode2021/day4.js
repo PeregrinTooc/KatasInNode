@@ -1,12 +1,15 @@
 "use strict"
 function solve1(input) {
-    let { numbers, boards } = input
+    let { numbers, boards, markedBoards } = mapInput(input)
+    console.log(numbers)
     while (numbers.length > 0) {
         let number = numbers.shift()
         for (let i = 0; i < boards.length; i++) {
-            boards[i] = boards[i].map((line) => line.map(n => n == number ? 0 : n))
-            if (boardHasWon(boards[i])) {
-                let remainingNumbers = calculateSumOfRemainingNumbers(boards[i])
+            markedBoards[i] = markedBoards[i].map((line, j) => line.map((b, k) => { return b || boards[i][j][k] == number }))
+            if (boardHasWon(markedBoards[i])) {
+                let remainingNumbers = calculateSumOfRemainingNumbers(boards[i], markedBoards[i])
+                console.log(boards[i])
+                console.log(number)
                 return number * remainingNumbers
             }
         }
@@ -14,15 +17,17 @@ function solve1(input) {
 }
 
 function solve2(input) {
-    let { numbers, boards } = input
+    let { numbers, boards, markedBoards } = mapInput(input)
     while (numbers.length > 0) {
         let number = numbers.shift()
         let winners = []
         for (let i = 0; i < boards.length; i++) {
-            boards[i] = boards[i].map((line) => line.map(n => n == number ? 0 : n))
-            if (boardHasWon(boards[i])) {
+            markedBoards[i] = markedBoards[i].map((line, j) => line.map((b, k) => { return b || boards[i][j][k] == number }))
+            if (boardHasWon(markedBoards[i])) {
                 if (boards.length == 1) {
-                    let remainingNumbers = calculateSumOfRemainingNumbers(boards[i])
+                    let remainingNumbers = calculateSumOfRemainingNumbers(boards[i], markedBoards[i])
+                    console.log(number)
+                    console.log(boards[0])
                     return number * remainingNumbers
                 }
                 else {
@@ -31,24 +36,37 @@ function solve2(input) {
             }
         }
         winners.forEach(index => boards.splice(index, 1))
-        if (boards.length == 1) {
-            console.log(boards[0])
-        }
+        winners.forEach(index => markedBoards.splice(index, 1))
     }
 }
 
-const calculateSum = (x, y) => x + y
-const id = x => x
+function mapInput({ numbers, boards }) {
+    let markedBoards = boards.map(board => board.map(line => line.map(x => false)))
+    return { numbers, boards, markedBoards }
+}
 
-function calculateSumOfRemainingNumbers(board) {
-    let remainingNumbers = 0
-    return board.reduce((sum, line) => sum + line.reduce(calculateSum, 0), 0)
+function calculateSumOfRemainingNumbers(board, markedBoard) {
+    return board.reduce((sum, line, i) => sum + line.reduce((x, y, j) => {
+        return markedBoard[i][j] ? x : x + y
+    }, 0), 0)
 }
 
 function hasRowMarked(board) {
-    return board.filter(line => line.reduce(calculateSum) == 0).length > 0
+    for (let i = 0; i < board.length; i++) {
+        const line = board[i];
+        let marked = true;
+        for (let j = 0; j < line.length; j++) {
+            if (!line[j]) {
+                marked = false
+                break
+            }
+        }
+        if (marked) {
+            return true
+        }
+    }
+    return false
 }
-
 function boardHasWon(board) {
     return hasRowMarked(board) || hasRowMarked(invertBoard(board))
 }
@@ -63,9 +81,6 @@ function invertBoard(board) {
     }
     return invertedBoard
 }
-
-
-
 
 module.exports = { solve1, solve2 }
 
