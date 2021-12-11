@@ -29,6 +29,8 @@ test("solver 1 takes a list and a number of ticks", () => {
     expect(solver.solve1([1], 0)).toBe(1)
     expect(solver.solve1([0, 1], 0)).toBe(2)
     expect(solver.solve1([0, 1], 1)).toBe(3)
+    expect(solver.solve1([1], 1)).toBe(1)
+    expect(solver.solve1([7], 8)).toBe(2)
 })
 test("solver 1 should pass acceptance test", () => {
     expect(solver.solve1(getInput(acceptanceTestInput), 80)).toBe(5934)
@@ -38,12 +40,10 @@ test("solver 1 should solve the puzzle", () => {
     expect(solver.solve1(getInput(puzzleInput), 80)).toBe(352195)
 })
 test("solver 2 should pass acceptance test", () => {
-    return
     expect(solver.solve1(getInput(acceptanceTestInput), 256)).toBe(26984457539)
 })
 test("solver 2 should solve the puzzle", () => {
-    return
-    expect(solver.solve2(getInput(puzzleInput))).toBe(17787)
+    expect(solver.solve1(getInput(puzzleInput), 256)).toBe(1600306001288)
 })
 
 
