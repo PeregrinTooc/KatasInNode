@@ -25,17 +25,21 @@ test('getInput should transform the input', () => {
 test("solver 1 should exist", () => {
     expect(solver.solve1).toBeDefined()
 })
+
+test('solver should get the lowest possible sum of distances', () => {
+    expect(solver.solve1([0])).toBe(0)
+    expect(solver.solve1([0, 1])).toBe(1)
+    expect(solver.solve1([0, 2])).toBe(2)
+    expect(solver.solve1([0, 2, 1])).toBe(2)
+})
 test("solver 1 should pass acceptance test", () => {
-    return
     expect(solver.solve1(getInput(acceptanceTestInput))).toBe(37)
 })
 test("solver 1 should solve the puzzle", () => {
-    return
-    expect(solver.solve1(getInput(puzzleInput))).toBe(352195)
+    expect(solver.solve1(getInput(puzzleInput))).toBe(328318)
 })
 test("solver 2 should pass acceptance test", () => {
-    return
-    expect(solver.solve1(getInput(acceptanceTestInput))).toBe(26984457539)
+    expect(solver.solve2(getInput(acceptanceTestInput))).toBe(168)
 })
 test("solver 2 should solve the puzzle", () => {
     return
