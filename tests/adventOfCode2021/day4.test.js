@@ -127,5 +127,5 @@ test("solver 2 should calculate for the winning board of 1", () => {
 })
 
 test("solver 2 should solve the puzzle", () => {
-    expect(solver.solve2(getInput(puzzleInput))).toBe(0)
+    expect(solver.solve2(getInput(puzzleInput))).toBe(1)
 })
